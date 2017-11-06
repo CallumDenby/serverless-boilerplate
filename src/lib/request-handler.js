@@ -36,14 +36,27 @@ export const ErrorHandler = curry((cb, { description = '', error = null, status 
   cb(null, response)
 })
 
-export default (handler) => {
+export class Handler {
+  constructor (event, context, done) {
+    this.run(event, context, done)
+  }
+
+  run (event, context, { success }) {
+    success({
+      body: 'Please override the run method'
+    })
+  }
+}
+
+export default (Handler) => {
   function Wrapper (event, context, cb) {
     log.info({ event })
-    handler(event, context, {
+    // eslint-disable-next-line no-new
+    new Handler(event, context, {
       success: SuccessHandler(cb),
       error: ErrorHandler(cb)
     })
   }
-  Wrapper.WrappedHandler = handler
+  Wrapper.WrappedHandler = Handler
   return Wrapper
 }
