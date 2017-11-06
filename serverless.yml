@@ -13,8 +13,8 @@ provider:
     SERVICE_NAME: serverless-boilerplate
 
 plugins:
-  - serverless-offline
   - serverless-webpack
+  - serverless-offline
 
 custom:
   serverless-offline:
