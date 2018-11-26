@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-implicit-dependencies": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "no-unused-expression": [true, "allow-new"]
+  }
+}

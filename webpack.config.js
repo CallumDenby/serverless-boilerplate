@@ -4,19 +4,23 @@ const slsw = require('serverless-webpack')
 
 module.exports = {
   entry: slsw.lib.entries,
-  target: 'node',
   externals: [nodeExternals()],
+  mode: process.env.IS_OFFLINE ? 'development' : 'production',
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel-loader'],
+    rules: [{
+      exclude: /node_modules/,
       include: __dirname,
-      exclude: /node_modules/
+      loaders: ['ts-loader'],
+      test: /\.ts$/,
     }]
   },
   output: {
+    filename: '[name].js',
     libraryTarget: 'commonjs',
     path: path.join(__dirname, '.webpack'),
-    filename: '[name].js'
-  }
+  },
+  resolve: {
+    extensions: ['.ts']
+  },
+  target: 'node'
 }
