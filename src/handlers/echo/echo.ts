@@ -1,11 +1,10 @@
-import RequestWrapper, { Handler } from '../../lib/request-handler';
+import { APIGatewayProxyEvent } from 'aws-lambda';
+import WrapHandler, { Handler } from '../../util/handlers';
 
-class Echo extends Handler {
-  public run(event, _, { success }) {
-    success({
-      body: JSON.stringify(event, null, 2),
-    });
-  }
-}
+const Echo: Handler<APIGatewayProxyEvent> = async ({ event, context }) => {
+  return {
+    body: JSON.stringify({ event, context }, null, 2),
+  };
+};
 
-export default RequestWrapper(Echo);
+export default WrapHandler(Echo);

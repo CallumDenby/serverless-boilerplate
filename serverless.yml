@@ -19,7 +19,8 @@ plugins:
 custom:
   serverless-offline:
     port: 4000
-  webpackIncludeModules: true
+  webpack:
+    includeModules: true
 
 package:
   individually: true

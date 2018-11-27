@@ -16,6 +16,7 @@
     "format:all": "npm run format -- '**/*.ts'"
   },
   "devDependencies": {
+    "@types/aws-lambda": "8.10.15",
     "@types/bunyan": "1.8.5",
     "@types/jest": "23.3.9",
     "husky": "1.2.0",
@@ -34,9 +35,7 @@
     "webpack-node-externals": "1.6.0"
   },
   "dependencies": {
-    "babel-runtime": "6.26.0",
-    "bunyan": "1.8.12",
-    "ramda": "0.25.0"
+    "bunyan": "1.8.12"
   },
   "husky": {
     "hooks": {

@@ -1,7 +1,7 @@
 import bunyan from 'bunyan';
 
 const log = bunyan.createLogger({
-  name: process.env.SERVICE_NAME,
+  name: process.env.SERVICE_NAME || 'NO_NAME',
   src: !!process.env.IS_OFFLINE,
 });
 
