@@ -6,5 +6,8 @@ jspm_packages
 .serverless
 .webpack
 
+# macOS
+.DS_Store
+
 # yarn
 yarn-error.log
