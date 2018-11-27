@@ -5,6 +5,7 @@ jspm_packages
 # Serverless directories
 .serverless
 .webpack
+.dist
 
 # macOS
 .DS_Store
