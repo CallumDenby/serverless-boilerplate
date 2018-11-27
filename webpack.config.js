@@ -5,7 +5,7 @@ const slsw = require('serverless-webpack')
 module.exports = {
   entry: slsw.lib.entries,
   externals: [nodeExternals()],
-  mode: process.env.IS_OFFLINE ? 'development' : 'production',
+  mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   module: {
     rules: [{
       exclude: /node_modules/,

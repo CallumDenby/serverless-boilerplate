@@ -6,7 +6,7 @@ export interface ISuccess {
   headers?: { [key: string]: string };
 }
 
-export const SuccessHandler = (cb) => ({
+export const SuccessHandler = ({
   body = '',
   headers = {},
   status = 200,
@@ -19,9 +19,9 @@ export const SuccessHandler = (cb) => ({
     },
     statusCode: status,
   };
-  log.info({
+  log.debug({
     ...response,
     body,
   });
-  cb(null, response);
+  return response
 };

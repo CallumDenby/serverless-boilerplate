@@ -7,7 +7,7 @@ describe('Request Handler', () => {
   });
   it('should call the WrappedHandler when invoked', () => {
     const Wrapper = RequestHandler(jest.fn());
-    Wrapper(undefined, undefined, undefined);
+    Wrapper(undefined, undefined);
     expect(Wrapper.WrappedHandler).toHaveBeenCalledTimes(1);
     expect(Wrapper.WrappedHandler).toHaveBeenLastCalledWith({
       context: undefined,
@@ -22,8 +22,7 @@ describe('Request Handler', () => {
     const context = {
       context: {},
     };
-    const cb = jest.fn();
-    Wrapper(event, context as any, cb);
+    Wrapper(event, context as any);
     expect(Wrapper.WrappedHandler).toHaveBeenCalledTimes(1);
     expect(Wrapper.WrappedHandler).toHaveBeenLastCalledWith({
       context,

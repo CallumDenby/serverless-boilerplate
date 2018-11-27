@@ -11,23 +11,19 @@ const defaultError = {
 
 describe('Error Handler', () => {
   it('should call cb with defaults', () => {
-    const cb = jest.fn();
-    ErrorHandler(cb)({} as any);
-    expect(cb).toHaveBeenCalledTimes(1);
-    expect(cb).toHaveBeenLastCalledWith(null, {
+    const response = ErrorHandler({} as any);
+    expect(response).toEqual({
       ...defaultError,
       body: JSON.stringify(defaultError.body),
     });
   });
   it('should call cb with the options passed in', () => {
-    const cb = jest.fn();
-    ErrorHandler(cb)({
+    const response = ErrorHandler({
       description: 'Authentication Required',
       error: new Error('Forbidden'),
       status: 403,
     } as any);
-    expect(cb).toHaveBeenCalledTimes(1);
-    expect(cb).toHaveBeenLastCalledWith(null, {
+    expect(response).toEqual({
       ...defaultError,
       body: JSON.stringify({
         description: 'Authentication Required',

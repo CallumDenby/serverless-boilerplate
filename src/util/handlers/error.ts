@@ -7,7 +7,7 @@ interface IError {
   status?: number;
 }
 
-export const ErrorHandler = (cb) => ({
+export const ErrorHandler = ({
   description = '',
   error = null,
   status = 501,
@@ -28,5 +28,5 @@ export const ErrorHandler = (cb) => ({
       error,
     },
   });
-  cb(null, response);
+  return response;
 };

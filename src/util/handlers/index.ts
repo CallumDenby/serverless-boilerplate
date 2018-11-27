@@ -11,13 +11,13 @@ export interface IPayload<T> {
 export type Handler<T> = (arg: IPayload<T>) => Promise<ISuccess>;
 
 export default <T>(EventHandler: Handler<T>) => {
-  async function Wrapper(event: T, context: Context, cb: (error, response) => void) {
+  async function Wrapper(event: T, context: Context) {
     log.info({ event });
     try {
       const response = await EventHandler({ context, event })
-      return SuccessHandler(cb)(response);
+      return SuccessHandler(response);
     } catch(error) {
-      return ErrorHandler(cb)(error);
+      return ErrorHandler(error);
     }
   }
   Wrapper.WrappedHandler = EventHandler;

@@ -5,6 +5,8 @@ const log = bunyan.createLogger({
   src: !!process.env.IS_OFFLINE,
 });
 
+log.level(bunyan[process.env.LOG_LEVEL || 'INFO']);
+
 if (process.env.NODE_ENV === 'test') {
   log.level(bunyan.FATAL + 1);
 }

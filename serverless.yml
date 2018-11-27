@@ -33,3 +33,10 @@ functions:
           path: echo
           method: any
           cors: true
+  hello-world:
+    handler: src/handlers/hello-world/hello-world.default
+    events:
+      - http:
+          path: hello-world
+          method: any
+          cors: true
